@@ -6,11 +6,6 @@ using System.Threading.Tasks;
 
 namespace InnerWorkings
 {
-    public interface IMargin
-    {
-        float GetMargin();
-    }
-
     public class MarginBase : IMargin
     {
         protected readonly float _baseMargin;

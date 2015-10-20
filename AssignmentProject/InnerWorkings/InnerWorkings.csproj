@@ -64,13 +64,19 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="IMargin.cs" />
+    <Compile Include="JobResultSet.cs" />
+    <Compile Include="Processors\JobProcessorSimple.cs" />
+    <Compile Include="Processors\IJobProcessor.cs" />
+    <Compile Include="Processors\IItemPriceCalculator.cs" />
     <Compile Include="ITax.cs" />
     <Compile Include="Item.cs" />
-    <Compile Include="ItemProcessor.cs" />
+    <Compile Include="Processors\ItemProcessor.cs" />
     <Compile Include="Job.cs" />
     <Compile Include="MarginBase.cs" />
     <Compile Include="Processors\ConsoleResultSetProcessor.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SalesTax.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

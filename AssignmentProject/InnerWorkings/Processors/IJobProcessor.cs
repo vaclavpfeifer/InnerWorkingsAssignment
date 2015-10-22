@@ -2,6 +2,6 @@
 {
     public interface IJobProcessor
     {
-        JobResultSet ProcessJob(Job job, IItemPriceCalculator itemPriceCalculator);
+        void ProcessJob(Job job);
     }
 }

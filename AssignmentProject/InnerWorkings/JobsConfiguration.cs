@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace InnerWorkings
 {
-    public interface ITax
+    class JobsConfiguration
     {
-        float getTax();
+        public List<Job> Jobs { get; set; } 
     }
 }

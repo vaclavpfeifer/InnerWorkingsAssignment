@@ -1,15 +1,15 @@
-﻿namespace InnerWorkings
+﻿namespace InnerWorkings.Business
 {
     public class SalesTax : ITax
     {
-        private readonly float _salesTax;
+        private readonly double _salesTax;
 
-        public SalesTax(float tax)
+        public SalesTax(double tax)
         {
             this._salesTax = tax;
         }
 
-        public float getTax()
+        public double getTax()
         {
             return this._salesTax;
         }

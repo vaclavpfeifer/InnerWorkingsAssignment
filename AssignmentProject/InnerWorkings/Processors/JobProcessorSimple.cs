@@ -1,22 +1,32 @@
-﻿using System;
+﻿using System.Collections.Generic;
+using InnerWorkings.Adapters;
+using InnerWorkings.Business;
 
 namespace InnerWorkings.Processors
 {
     public class JobProcessorSimple : IJobProcessor
     {
-        JobResultSet IJobProcessor.ProcessJob(Job job, IItemPriceCalculator itemPriceCalculator)
-        {
-            var jobResult = new JobResultSet();
+        private readonly IItemPriceCalculator _itemPriceCalculator;
+        private readonly IOutputWriter _outWriter;
 
+        public JobProcessorSimple(IItemPriceCalculator itemPriceCalculator, IOutputWriter outWriter)
+        {
+            this._itemPriceCalculator = itemPriceCalculator;
+            this._outWriter = outWriter;
+        }
+
+        void IJobProcessor.ProcessJob(Job job)
+        {
+            var priceList = new List<double>();
             foreach(var item in job.Items)
             {
-                float itemPrice = itemPriceCalculator.CalculatePrice(
+                double itemPrice = _itemPriceCalculator.CalculatePrice(
                     item, job.Margin.GetMargin(), job.Tax.getTax());
+                priceList.Add(itemPrice);
 
-                jobResult.Results.Add(new Tuple<string, float>(item.Name, itemPrice));
+                this._outWriter.WriteLine($"{item.Name}: ${itemPrice}");
             }
-
-            return jobResult;
+            this._outWriter.WriteLine($"total: ${_itemPriceCalculator.CalculateFinalSum(priceList)}");
         }
     }
 }

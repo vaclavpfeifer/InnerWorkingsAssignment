@@ -55,6 +55,7 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -64,23 +65,33 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="IMargin.cs" />
-    <Compile Include="JobResultSet.cs" />
+    <Compile Include="Business\ExtraMargin.cs" />
+    <Compile Include="Business\IMargin.cs" />
+    <Compile Include="Configuration\ItemConfiguration.cs" />
+    <Compile Include="Configuration\ItemConfigurationCollection.cs" />
+    <Compile Include="Configuration\JobConfiguration.cs" />
+    <Compile Include="Configuration\JobConfigurationCollection.cs" />
+    <Compile Include="Configuration\JobsConfigurationSection.cs" />
+    <Compile Include="JobsConfiguration.cs" />
+    <Compile Include="Adapters\IOutputWriter.cs" />
+    <Compile Include="Adapters\ConsoleWriterAdapter.cs" />
+    <Compile Include="Adapters\FileOutputWriterAdapter.cs" />
     <Compile Include="Processors\JobProcessorSimple.cs" />
     <Compile Include="Processors\IJobProcessor.cs" />
-    <Compile Include="Processors\IItemPriceCalculator.cs" />
-    <Compile Include="ITax.cs" />
+    <Compile Include="Business\IItemPriceCalculator.cs" />
+    <Compile Include="Business\ITax.cs" />
     <Compile Include="Item.cs" />
-    <Compile Include="Processors\ItemProcessor.cs" />
+    <Compile Include="Business\ItemPriceCalculator.cs" />
     <Compile Include="Job.cs" />
-    <Compile Include="MarginBase.cs" />
+    <Compile Include="Business\MarginBase.cs" />
     <Compile Include="Processors\ConsoleResultSetProcessor.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SalesTax.cs" />
+    <Compile Include="Business\SalesTax.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

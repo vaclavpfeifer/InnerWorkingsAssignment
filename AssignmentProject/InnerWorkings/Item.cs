@@ -10,6 +10,6 @@
         public bool IsTaxFree { get; }
 
         public string Name { get; set; }
-        public float Price { get; set; }
+        public double Price { get; set; }
     }
 }

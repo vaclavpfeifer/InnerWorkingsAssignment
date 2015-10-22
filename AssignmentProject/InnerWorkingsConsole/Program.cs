@@ -89,6 +89,7 @@ total: $24608.68
 using System;
 using System.Collections.Generic;
 using System.Configuration;
+using System.Globalization;
 using System.Linq;
 using InnerWorkings;
 using InnerWorkings.Adapters;
@@ -124,7 +125,7 @@ namespace InnerWorkingsConsole
 
         private void Run(string[] args)
         {
-            // TODO: check for input parameters and if present try to parse as input job data
+            // Loading from inpt args (separate on unity - done just to fullfill reqs)
             if (args.Any())
             {
                 var singleJob = this.ProcessArgs(args);
@@ -206,20 +207,20 @@ namespace InnerWorkingsConsole
 
             if (args[index] == "extra-margin")
             {
-                margin = new MarginBase();
+                margin = new ExtraMargin();
                 index++;
             }
             else
             {
-                margin = new ExtraMargin();
+                margin = new MarginBase();
             }
 
             State state = State.Name;
+            Item item = null;
 
             // iterate rest of the items
             for (int i = index; i < args.Count(); ++i)
             {
-                Item item = null;
                 switch (state)
                 {
                     case State.Name:
@@ -231,7 +232,8 @@ namespace InnerWorkingsConsole
                         break;
 
                     case State.Value:
-                        item.Price = Double.Parse(args[i]);
+                        item.Price = Double.Parse(args[i], CultureInfo.InvariantCulture);
+                        // item.Price = Convert.ToDouble(args[i]);
                         if (i + 1 < args.Count())
                         {
                             if (args[i + 1] == "exempt")

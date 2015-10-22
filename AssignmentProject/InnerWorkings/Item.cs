@@ -2,14 +2,10 @@
 {
     public class Item
     {
-        public Item(bool isTaxFree = false)
-        {
-            this.IsTaxFree = isTaxFree;
-        }
-
-        public bool IsTaxFree { get; }
+        public bool IsTaxFree { get; set; }
 
         public string Name { get; set; }
+
         public double Price { get; set; }
     }
 }

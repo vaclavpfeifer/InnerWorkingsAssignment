@@ -2,6 +2,8 @@
 
 namespace InnerWorkings.Adapters
 {
+    // TODO: implement File Writer.
+
     public class FileOutputWriterAdapter : IOutputWriter
     {
         public void WriteLine(string line)

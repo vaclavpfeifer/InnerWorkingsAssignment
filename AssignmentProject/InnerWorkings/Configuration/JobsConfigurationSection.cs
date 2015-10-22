@@ -16,16 +16,16 @@ namespace InnerWorkings.Configuration
         }
 
         [ConfigurationProperty("baseMargin", DefaultValue = "11", IsRequired = false)]
-        public string BaseMargin
+        public double BaseMargin
         {
-            get { return (string)this["baseMargin"]; }
+            get { return (double)this["baseMargin"]; }
             set { this["baseMargin"] = value; }
         }
 
         [ConfigurationProperty("extraMargin", DefaultValue = "5", IsRequired = false)]
-        public string ExtraMargin
+        public double ExtraMargin
         {
-            get { return (string)this["extraMargin"]; }
+            get { return (double)this["extraMargin"]; }
             set { this["extraMargin"] = value; }
         }
     }

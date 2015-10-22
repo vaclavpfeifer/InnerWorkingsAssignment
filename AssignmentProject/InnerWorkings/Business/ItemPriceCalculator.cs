@@ -22,14 +22,25 @@ namespace InnerWorkings.Business
             // calculate MarginType
             marginFees = item.Price * margin/100;
 
-            return item.Price + taxFees + marginFees;
+            return Math.Round(item.Price + taxFees + marginFees, 2, MidpointRounding.ToEven);
+        }
+
+        public double CalculateMarginOnItems(IEnumerable<Item> items, double margin)
+        {
+            // TODO: check for null and empty. check for divede by zero!
+            return items.Sum(item => item.Price) * margin/100;
+        }
+
+        public double CalculateTaxOnItem(Item item, double tax)
+        {
+            if (item.IsTaxFree) return 0;
+
+            return item.Price*tax/100;
         }
 
         public double CalculateFinalSum(IEnumerable<double> itemPrices)
         {
             var finalSum = itemPrices.Sum() + 0.0001;
-
-            //finalSum = Math.Round(finalSum, 2, MidpointRounding.ToEven);
 
             finalSum = Math.Floor(finalSum*100);
 

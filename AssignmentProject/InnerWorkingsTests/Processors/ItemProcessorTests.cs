@@ -9,8 +9,9 @@ namespace InnerWorkings.Processors.Tests
         [TestMethod()]
         public void CalculatePrice_ShouldOmmitTaxWhenTaxFree()
         {
-            var item = new Item(true)
+            var item = new Item
             {
+                IsTaxFree = true,
                 Name = "Letter",
                 Price = (double) 100.0
             };
@@ -33,13 +34,7 @@ namespace InnerWorkings.Processors.Tests
         [TestMethod()]
         public void CalculatePrice_ShouldRoundToNearestCent()
         {
-            var item = new Item
-            {
-                Name = "Letter",
-                Price = (double)125.55
-            };
-
-            Assert.AreEqual(142.16, new ItemPriceCalculator().CalculatePrice(item, 11, 5));
+            Assert.AreEqual(125.56, new ItemPriceCalculator().CalculatePrice(new Item() {Price = 125.555}, 0, 0));
         }
 
         [TestMethod()]
